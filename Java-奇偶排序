@@ -1,0 +1,38 @@
+package com.briup.md11;
+
+import java.util.Comparator;
+import java.util.TreeSet;
+import java.util.function.Function;
+
+public class Test06 {
+    public static void main(String[] args) {
+        TreeSet<Integer> set = new TreeSet<>(new comp());
+        for (int i = 0; i < 10; i++) {
+            set.add(i+1);
+        }
+        System.out.println(set);
+    }
+}
+
+class comp implements Comparator{
+
+
+    @Override
+    public int compare(Object o1, Object o2) {
+        Integer a = (Integer) o1;
+        Integer b = (Integer) o2;
+        if (a % 2 == 0 && b % 2 == 0){
+            return -1;
+        }
+        if (a % 2 == 1 && b % 2 == 1){
+            return 1;
+        }
+        if (a % 2 == 0 && b % 2 == 1){
+            return 1;
+        }
+        if (a % 2 == 1 && b % 2 == 0){
+            return -1;
+        }
+        return 0;
+    }
+}
